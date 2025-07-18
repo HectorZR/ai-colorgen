@@ -7,7 +7,6 @@
  * and footer information.
  */
 
-import React from "react";
 import { PaletteGenerator } from "@/modules/palette-generator";
 import Footer from "@/components/Footer";
 
@@ -21,8 +20,8 @@ export default function Home() {
             Color<span className="text-primary">Gen</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Genera paletas de colores profesionales con inteligencia artificial.
-            Describe tu proyecto y obtén una paleta perfecta al instante.
+            Generate professional color palettes with artificial intelligence.
+            Describe your project and get a perfect palette instantly.
           </p>
         </div>
 

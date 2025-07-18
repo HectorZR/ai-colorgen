@@ -7,7 +7,6 @@
  * and validation, following the modular architecture pattern.
  */
 
-import React from "react";
 import { useForm } from "@tanstack/react-form";
 import { Palette, Sparkles, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -24,11 +23,11 @@ interface PaletteFormProps {
   className?: string;
 }
 
-const PaletteForm: React.FC<PaletteFormProps> = ({
+const PaletteForm = ({
   onSubmit,
   loadingState,
   className,
-}) => {
+}: PaletteFormProps) => {
   const form = useForm({
     defaultValues: {
       description: "",
@@ -41,10 +40,10 @@ const PaletteForm: React.FC<PaletteFormProps> = ({
   const isLoading = loadingState === "generating";
 
   const exampleDescriptions = [
-    "Aplicación web de fintech, 6 colores, estilo profesional con azules corporativos y acentos verdes para acciones positivas, armonía análoga",
-    "App móvil de wellness, 4 colores, paleta calmante con tonos tierra y verdes suaves, diseño minimalista, armonía monocromática",
-    "Dashboard de analytics, 5 colores, colores vibrantes para gráficos con fondo neutro, necesito buenos contrastes para accesibilidad",
-    "E-commerce de moda, 7 colores, paleta sofisticada con negros, blancos y un color accent rosa dorado, estilo premium",
+    "Fintech web application, 6 colors, professional style with corporate blues and green accents for positive actions, analogous harmony",
+    "Wellness mobile app, 4 colors, calming palette with earth tones and soft greens, minimalist design, monochromatic harmony",
+    "Analytics dashboard, 5 colors, vibrant colors for charts with neutral background, need good contrasts for accessibility",
+    "Fashion e-commerce, 7 colors, sophisticated palette with blacks, whites and a rose gold accent color, premium style",
   ];
 
   return (
@@ -56,10 +55,10 @@ const PaletteForm: React.FC<PaletteFormProps> = ({
           </div>
         </div>
         <CardTitle className="text-2xl font-bold">
-          Generador de Paletas con IA
+          AI Color Palette Generator
         </CardTitle>
         <p className="text-muted-foreground">
-          Describe tu proyecto y genera una paleta de colores personalizada
+          Describe your project and generate a personalized color palette
         </p>
       </CardHeader>
 
@@ -89,12 +88,12 @@ const PaletteForm: React.FC<PaletteFormProps> = ({
             {(field) => (
               <div className="space-y-2">
                 <Label htmlFor="description" className="text-base font-medium">
-                  Describe tu paleta ideal
+                  Describe your ideal palette
                 </Label>
                 <Textarea
                   id="description"
                   name="description"
-                  placeholder="Ejemplo: Aplicación web, 5 colores, estilo minimalista con tonos azulados fríos, armonía complementaria. Incluye información sobre el tipo de proyecto, cantidad de colores deseados, estilo visual, colores preferidos y reglas de armonía."
+                  placeholder="Example: Web application, 5 colors, minimalist style with cool blue tones, complementary harmony. Include information about project type, desired number of colors, visual style, preferred colors, and harmony rules."
                   value={field.state.value}
                   onChange={(e) => field.handleChange(e.target.value)}
                   onBlur={field.handleBlur}
@@ -119,20 +118,15 @@ const PaletteForm: React.FC<PaletteFormProps> = ({
             <div className="flex items-start gap-3">
               <Info className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
               <div className="space-y-2">
-                <h4 className="font-medium text-sm">
-                  Tips para mejores resultados
-                </h4>
+                <h4 className="font-medium text-sm">Tips for better results</h4>
                 <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Specify the project type (web, mobile, desktop)</li>
+                  <li>• Mention the number of colors you need</li>
                   <li>
-                    • Especifica el tipo de proyecto (web, móvil, desktop)
+                    • Describe the visual style (minimalist, vibrant, corporate)
                   </li>
-                  <li>• Menciona la cantidad de colores que necesitas</li>
-                  <li>
-                    • Describe el estilo visual (minimalista, vibrante,
-                    corporativo)
-                  </li>
-                  <li>• Incluye colores de referencia si los tienes</li>
-                  <li>• Especifica la regla de armonía deseada</li>
+                  <li>• Include reference colors if you have them</li>
+                  <li>• Specify the desired harmony rule</li>
                 </ul>
               </div>
             </div>
@@ -140,7 +134,7 @@ const PaletteForm: React.FC<PaletteFormProps> = ({
 
           {/* Example Descriptions */}
           <div className="space-y-3">
-            <h4 className="font-medium text-sm">Ejemplos de descripciones:</h4>
+            <h4 className="font-medium text-sm">Example descriptions:</h4>
             <div className="grid gap-2">
               {exampleDescriptions.map((example, index) => (
                 <button
@@ -170,12 +164,12 @@ const PaletteForm: React.FC<PaletteFormProps> = ({
                 {isLoading ? (
                   <>
                     <div className="animate-spin rounded-full h-4 w-4 border-2 border-background border-t-transparent mr-2" />
-                    Generando Paleta...
+                    Generating Palette...
                   </>
                 ) : (
                   <>
                     <Sparkles className="h-5 w-5 mr-2" />
-                    Generar Paleta
+                    Generate Palette
                   </>
                 )}
               </Button>
@@ -187,7 +181,7 @@ const PaletteForm: React.FC<PaletteFormProps> = ({
         {isLoading && (
           <div className="text-center space-y-2">
             <p className="text-sm text-muted-foreground">
-              Analizando tu descripción y generando la paleta perfecta...
+              Analyzing your description and generating the perfect palette...
             </p>
             <div className="flex justify-center space-x-1">
               {[0, 1, 2].map((i) => (

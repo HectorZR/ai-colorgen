@@ -8,7 +8,7 @@
  * between different UI components and services.
  */
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { AlertCircle, RefreshCw } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -35,10 +35,10 @@ interface PaletteGeneratorProps {
   onPaletteGenerated?: (palette: GeneratedPalette) => void;
 }
 
-const PaletteGenerator: React.FC<PaletteGeneratorProps> = ({
+const PaletteGenerator = ({
   className,
   onPaletteGenerated,
-}) => {
+}: PaletteGeneratorProps) => {
   const [loadingState, setLoadingState] = useState<LoadingState>("idle");
   const [generatedPalette, setGeneratedPalette] =
     useState<GeneratedPalette | null>(null);
@@ -115,7 +115,7 @@ const PaletteGenerator: React.FC<PaletteGeneratorProps> = ({
         <div className="flex justify-center">
           <LoadingSpinner
             size="lg"
-            message="Generando tu paleta perfecta..."
+            message="Generating your perfect palette..."
             className="w-full max-w-md"
           />
         </div>
@@ -131,14 +131,14 @@ const PaletteGenerator: React.FC<PaletteGeneratorProps> = ({
               </div>
             </div>
             <CardTitle className="text-destructive">
-              Error al generar la paleta
+              Error generating palette
             </CardTitle>
             <CardDescription>{error}</CardDescription>
           </CardHeader>
           <CardContent className="text-center space-y-4">
             <p className="text-sm text-muted-foreground">
-              Por favor, revisa tu descripción e intenta nuevamente. Si el
-              problema persiste, verifica tu conexión a internet.
+              Please review your description and try again. If the problem
+              persists, check your internet connection.
             </p>
             <div className="flex flex-col sm:flex-row gap-2 justify-center">
               <Button
@@ -147,14 +147,14 @@ const PaletteGenerator: React.FC<PaletteGeneratorProps> = ({
                 className="flex items-center gap-2"
               >
                 <RefreshCw className="h-4 w-4" />
-                Intentar de nuevo
+                Try again
               </Button>
               <Button
                 onClick={handleNewGeneration}
                 variant="outline"
                 className="flex items-center gap-2"
               >
-                Nueva descripción
+                New description
               </Button>
             </div>
           </CardContent>

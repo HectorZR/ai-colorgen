@@ -6,7 +6,6 @@
  * providing visual feedback to users during the API call process.
  */
 
-import React from "react";
 import { cn } from "@/lib/utils";
 
 interface LoadingSpinnerProps {
@@ -15,11 +14,11 @@ interface LoadingSpinnerProps {
   message?: string;
 }
 
-const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
+const LoadingSpinner = ({
   className,
   size = "md",
-  message = "Generando paleta...",
-}) => {
+  message = "Generating palette...",
+}: LoadingSpinnerProps) => {
   const sizeClasses = {
     sm: "w-4 h-4",
     md: "w-8 h-8",
@@ -70,7 +69,7 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
             {message}
           </p>
           <p className="text-sm text-muted-foreground">
-            Esto puede tomar unos segundos...
+            This may take a few seconds...
           </p>
         </div>
       )}

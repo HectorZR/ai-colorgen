@@ -6,7 +6,7 @@
  * It's part of the presentation layer for displaying generated palette results.
  */
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Copy, Check, Eye, Palette } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -21,12 +21,12 @@ interface ColorCardProps {
   compact?: boolean;
 }
 
-const ColorCard: React.FC<ColorCardProps> = ({
+const ColorCard = ({
   color,
   className,
   showVariations = true,
   compact = false,
-}) => {
+}: ColorCardProps) => {
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
   const [previewMode, setPreviewMode] = useState(false);
 
@@ -122,11 +122,11 @@ const ColorCard: React.FC<ColorCardProps> = ({
             >
               {copiedItem === "hex-alt" ? (
                 <>
-                  <Check className="h-3 w-3 mr-1" /> Copiado
+                  <Check className="h-3 w-3 mr-1" /> Copied
                 </>
               ) : (
                 <>
-                  <Copy className="h-3 w-3 mr-1" /> Copiar
+                  <Copy className="h-3 w-3 mr-1" /> Copy
                 </>
               )}
             </Button>
@@ -140,9 +140,7 @@ const ColorCard: React.FC<ColorCardProps> = ({
         {/* Purpose and Usage */}
         <div className="space-y-2">
           <div>
-            <p className="text-sm font-medium text-muted-foreground">
-              Propósito
-            </p>
+            <p className="text-sm font-medium text-muted-foreground">Purpose</p>
             <p className="text-sm">{color.purpose}</p>
           </div>
 
@@ -151,7 +149,7 @@ const ColorCard: React.FC<ColorCardProps> = ({
             color.recommendedUsage.length > 0 && (
               <div>
                 <p className="text-sm font-medium text-muted-foreground">
-                  Uso recomendado
+                  Recommended usage
                 </p>
                 <div className="flex flex-wrap gap-1 mt-1">
                   {color.recommendedUsage.map((usage, index) => (
@@ -171,7 +169,7 @@ const ColorCard: React.FC<ColorCardProps> = ({
         {showVariations && color.variations && !compact && (
           <div>
             <p className="text-sm font-medium text-muted-foreground mb-2">
-              Variaciones
+              Variations
             </p>
             <div className="space-y-2">
               {color.variations.hover && (
@@ -274,7 +272,7 @@ const ColorCard: React.FC<ColorCardProps> = ({
         {copiedItem && (
           <div className="text-center">
             <p className="text-xs text-green-600 dark:text-green-400 animate-fade-in">
-              ¡Color copiado al portapapeles!
+              Color copied to clipboard!
             </p>
           </div>
         )}

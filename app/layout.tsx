@@ -13,15 +13,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ColorGen - Generador de Paletas con IA",
+  title: "ColorGen - AI-Powered Color Palette Generator",
   description:
-    "Genera paletas de colores profesionales con inteligencia artificial. Describe tu proyecto y obtén una paleta perfecta al instante.",
+    "Generate professional color palettes with artificial intelligence. Describe your project and get a perfect palette instantly.",
   keywords: [
-    "paleta de colores",
-    "generador",
-    "inteligencia artificial",
-    "diseño",
-    "colores",
+    "color palette",
+    "generator",
+    "artificial intelligence",
+    "design",
+    "colors",
     "UI",
     "UX",
   ],
@@ -30,17 +30,17 @@ export const metadata: Metadata = {
   viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   openGraph: {
-    title: "ColorGen - Generador de Paletas con IA",
+    title: "ColorGen - AI-Powered Color Palette Generator",
     description:
-      "Genera paletas de colores profesionales con inteligencia artificial",
+      "Generate professional color palettes with artificial intelligence",
     type: "website",
-    locale: "es_ES",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ColorGen - Generador de Paletas con IA",
+    title: "ColorGen - AI-Powered Color Palette Generator",
     description:
-      "Genera paletas de colores profesionales con inteligencia artificial",
+      "Generate professional color palettes with artificial intelligence",
   },
 };
 
@@ -50,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans`}
       >

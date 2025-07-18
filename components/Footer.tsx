@@ -5,33 +5,35 @@
  * information for the palette generator application.
  */
 
-import React from 'react';
-import { Heart, Sparkles } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Heart, Sparkles } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface FooterProps {
   className?: string;
 }
 
-const Footer: React.FC<FooterProps> = ({ className }) => {
+const Footer = ({ className }: FooterProps) => {
   return (
-    <footer className={cn(
-      'w-full border-t border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60',
-      className
-    )}>
+    <footer
+      className={cn(
+        "w-full border-t border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
+        className,
+      )}
+    >
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col items-center justify-center space-y-2 text-center">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <span>Desarrollado con</span>
+            <span>Developed with</span>
             <Heart className="h-4 w-4 text-red-500 animate-pulse" />
-            <span>y</span>
+            <span>and</span>
             <Sparkles className="h-4 w-4 text-primary animate-pulse" />
-            <span>para potenciar tu creatividad</span>
+            <span>to power your creativity</span>
           </div>
 
           <div className="text-xs text-muted-foreground">
             <p>
-              © {new Date().getFullYear()} ColorGen. Paletas de colores generadas con inteligencia artificial.
+              © {new Date().getFullYear()} ColorGen. Color palettes generated
+              with artificial intelligence.
             </p>
           </div>
 

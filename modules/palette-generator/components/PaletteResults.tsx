@@ -7,7 +7,7 @@
  * for showing the results of the palette generation process.
  */
 
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Download,
   Share2,
@@ -36,11 +36,11 @@ interface PaletteResultsProps {
   className?: string;
 }
 
-const PaletteResults: React.FC<PaletteResultsProps> = ({
+const PaletteResults = ({
   palette,
   onNewGeneration,
   className,
-}) => {
+}: PaletteResultsProps) => {
   const [exportingFormat, setExportingFormat] = useState<ExportFormat | null>(
     null,
   );
@@ -97,22 +97,22 @@ const PaletteResults: React.FC<PaletteResultsProps> = ({
     {
       format: "css-variables",
       label: "CSS Variables",
-      description: "Variables CSS para usar en tu proyecto",
+      description: "CSS variables to use in your project",
     },
     {
       format: "json",
       label: "JSON",
-      description: "Formato JSON para APIs y configuraciones",
+      description: "JSON format for APIs and configurations",
     },
     {
       format: "scss",
       label: "SCSS",
-      description: "Variables SCSS para preprocesadores",
+      description: "SCSS variables for preprocessors",
     },
     {
       format: "tailwind",
       label: "Tailwind Config",
-      description: "Configuración para Tailwind CSS",
+      description: "Configuration for Tailwind CSS",
     },
   ];
 
@@ -140,12 +140,12 @@ const PaletteResults: React.FC<PaletteResultsProps> = ({
                 {copiedPalette ? (
                   <>
                     <Sparkles className="h-4 w-4" />
-                    ¡Copiado!
+                    Copied!
                   </>
                 ) : (
                   <>
                     <Share2 className="h-4 w-4" />
-                    Copiar Paleta
+                    Copy Palette
                   </>
                 )}
               </Button>
@@ -155,7 +155,7 @@ const PaletteResults: React.FC<PaletteResultsProps> = ({
                 className="flex items-center gap-2"
               >
                 <Share2 className="h-4 w-4" />
-                Compartir
+                Share
               </Button>
               {onNewGeneration && (
                 <Button
@@ -163,7 +163,7 @@ const PaletteResults: React.FC<PaletteResultsProps> = ({
                   className="flex items-center gap-2"
                 >
                   <Sparkles className="h-4 w-4" />
-                  Nueva Paleta
+                  New Palette
                 </Button>
               )}
             </div>
@@ -174,21 +174,21 @@ const PaletteResults: React.FC<PaletteResultsProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
             <div className="flex items-center gap-2">
               <Target className="h-4 w-4 text-muted-foreground" />
-              <span className="font-medium">Entorno:</span>
+              <span className="font-medium">Environment:</span>
               <span className="text-muted-foreground">
                 {palette.environment}
               </span>
             </div>
             <div className="flex items-center gap-2">
               <Palette className="h-4 w-4 text-muted-foreground" />
-              <span className="font-medium">Armonía:</span>
+              <span className="font-medium">Harmony:</span>
               <span className="text-muted-foreground">
                 {palette.harmonyRule}
               </span>
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4 text-muted-foreground" />
-              <span className="font-medium">Generada:</span>
+              <span className="font-medium">Generated:</span>
               <span className="text-muted-foreground">
                 {formatDate(palette.createdAt)}
               </span>
@@ -214,10 +214,10 @@ const PaletteResults: React.FC<PaletteResultsProps> = ({
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Download className="h-5 w-5" />
-            Exportar Paleta
+            Export Palette
           </CardTitle>
           <CardDescription>
-            Descarga tu paleta en diferentes formatos para usar en tu proyecto
+            Download your palette in different formats to use in your project
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -250,9 +250,9 @@ const PaletteResults: React.FC<PaletteResultsProps> = ({
       {/* Color Preview Strip */}
       <Card>
         <CardHeader>
-          <CardTitle>Vista Previa de la Paleta</CardTitle>
+          <CardTitle>Palette Preview</CardTitle>
           <CardDescription>
-            Así se ve tu paleta completa en acción
+            See how your complete palette looks in action
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -283,7 +283,7 @@ const PaletteResults: React.FC<PaletteResultsProps> = ({
             {/* Usage example */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <h4 className="font-medium">Ejemplo de uso:</h4>
+                <h4 className="font-medium">Usage example:</h4>
                 <div
                   className="p-4 rounded-lg border"
                   style={{
@@ -297,7 +297,7 @@ const PaletteResults: React.FC<PaletteResultsProps> = ({
                       color: palette.colors[3]?.hex || "#000000",
                     }}
                   >
-                    Título del Proyecto
+                    Project Title
                   </h5>
                   <p
                     className="text-sm mb-3"
@@ -305,8 +305,8 @@ const PaletteResults: React.FC<PaletteResultsProps> = ({
                       color: palette.colors[4]?.hex || "#666666",
                     }}
                   >
-                    Este es un ejemplo de cómo se vería tu paleta aplicada en un
-                    diseño real.
+                    This is an example of how your palette would look applied in
+                    a real design.
                   </p>
                   <div className="flex gap-2">
                     <button
@@ -316,7 +316,7 @@ const PaletteResults: React.FC<PaletteResultsProps> = ({
                         color: "#ffffff",
                       }}
                     >
-                      Acción Principal
+                      Primary Action
                     </button>
                     <button
                       className="px-4 py-2 rounded text-sm font-medium border"
@@ -325,14 +325,14 @@ const PaletteResults: React.FC<PaletteResultsProps> = ({
                         color: palette.colors[1]?.hex || "#3b82f6",
                       }}
                     >
-                      Secundaria
+                      Secondary
                     </button>
                   </div>
                 </div>
               </div>
 
               <div className="space-y-2">
-                <h4 className="font-medium">Códigos rápidos:</h4>
+                <h4 className="font-medium">Quick codes:</h4>
                 <div className="bg-muted rounded-lg p-3 font-mono text-sm space-y-1">
                   {palette.colors.slice(0, 5).map((color, index) => (
                     <div key={index} className="flex justify-between">
