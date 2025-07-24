@@ -1,0 +1,81 @@
+services:
+  dev:
+    build:
+      context: .
+      target: dev
+    container_name: colorgen-dev
+    restart: unless-stopped
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - APP_ENV=${APP_ENV:-development}
+      - WATCHPACK_POLLING=true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.colorgen.rule=Host(`colorgen-dev.${HOST:-localhost}`)"
+      - "traefik.http.routers.colorgen.entrypoints=web"
+      - "traefik.http.services.colorgen.loadbalancer.server.port=${PORT:-3000}"
+    networks:
+      - proxy
+    profiles:
+      - dev
+
+  prod:
+    build:
+      context: .
+      target: prod
+    container_name: colorgen-prod
+    restart: unless-stopped
+    environment:
+      - APP_ENV=${APP_ENV:-production}
+      - NEXT_TELEMETRY_DISABLED=1
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.colorgen.rule=Host(`colorgen.${HOST:-localhost}`)"
+      - "traefik.http.routers.colorgen.entrypoints=websecure"
+      - "traefik.http.services.colorgen.loadbalancer.server.port=${PORT:-3000}"
+      - "traefik.http.routers.colorgen.tls=true"
+      - "traefik.http.routers.colorgen.tls.certresolver=le"
+      - "traefik.docker.network=proxy"
+    networks:
+      - proxy
+    profiles:
+      - prod
+
+  traefik:
+    image: traefik:v3.4
+    container_name: traefik
+    restart: unless-stopped
+    command:
+      - --api.insecure=true
+      - --providers.docker=true
+      - --providers.docker.network=proxy
+      - --entrypoints.web.address=:80
+      - --log.level=INFO
+      - --accesslog=true
+    ports:
+      - "80:80"
+      - "8080:8080" # Traefik dashboard
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - traefik-letsencrypt:/letsencrypt
+    networks:
+      - proxy
+    profiles:
+      - dev
+    healthcheck:
+      test: ["CMD", "traefik", "healthcheck", "--ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  traefik-letsencrypt:
+    external: false
+
+networks:
+  proxy:
+    name: proxy
+    external: true
