@@ -5,10 +5,10 @@ services:
       target: dev
     container_name: colorgen-dev
     restart: unless-stopped
+    user: "1001:1001"
     volumes:
       - ./:/app
       - /app/node_modules
-      - /app/.next
     environment:
       - APP_ENV=${APP_ENV:-development}
       - WATCHPACK_POLLING=true
