@@ -1,14 +1,5 @@
-"use client";
-/**
- * Main page component for the ColorGen application
- *
- * This page serves as the entry point for the palette generation functionality,
- * providing a clean, responsive layout with the main generator component
- * and footer information.
- */
-
 import { PaletteGenerator } from "@/modules/palette-generator";
-import Footer from "@/components/Footer";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (
@@ -27,12 +18,7 @@ export default function Home() {
 
         {/* Main Content */}
         <main className="flex flex-col items-center justify-center space-y-8">
-          <PaletteGenerator
-            onPaletteGenerated={(palette) => {
-              // Optional: Handle palette generation completion
-              console.log("Palette generated:", palette);
-            }}
-          />
+          <PaletteGenerator />
         </main>
       </div>
 
