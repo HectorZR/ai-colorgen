@@ -26,9 +26,9 @@ import {
   PaletteGenerationResponse,
 } from "../types";
 import { generatePalette } from "../services/palette-api";
-import PaletteForm from "./PaletteForm";
-import PaletteResults from "./PaletteResults";
-import LoadingSpinner from "./LoadingSpinner";
+import PaletteForm from "./palette-form";
+import PaletteResults from "./palette-results";
+import LoadingSpinner from "./loading-spinner";
 
 interface PaletteGeneratorProps {
   className?: string;

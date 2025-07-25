@@ -7,18 +7,18 @@
  */
 
 // Main Components
-export { default as PaletteGenerator } from './components/PaletteGenerator';
-export { default as PaletteForm } from './components/PaletteForm';
-export { default as PaletteResults } from './components/PaletteResults';
-export { default as ColorCard } from './components/ColorCard';
-export { default as LoadingSpinner } from './components/LoadingSpinner';
+export { default as PaletteGenerator } from "./components/palette-generator";
+export { default as PaletteForm } from "./components/palette-form";
+export { default as PaletteResults } from "./components/palette-results";
+export { default as ColorCard } from "./components/color-card";
+export { default as LoadingSpinner } from "./components/loading-spinner";
 
 // Services
 export {
   generatePalette,
   generatePaletteWithAI,
-  exportPalette
-} from './services/palette-api';
+  exportPalette,
+} from "./services/palette-api";
 
 // Types
 export type {
@@ -29,8 +29,8 @@ export type {
   LoadingState,
   ExportFormat,
   FormErrors,
-  CopyResult
-} from './types';
+  CopyResult,
+} from "./types";
 
 // Utilities
 export {
@@ -51,8 +51,8 @@ export {
   getEnvironmentCapabilities,
   sanitizeInput,
   calculateReadingTime,
-  formatDate
-} from './utils';
+  formatDate,
+} from "./utils";
 
 // Default export for the main component
-export { default } from './components/PaletteGenerator';
+export { default } from "./components/palette-generator";

@@ -28,7 +28,7 @@ import {
 import { GeneratedPalette, ExportFormat } from "../types";
 import { copyToClipboard, downloadPalette, formatDate } from "../utils";
 import { exportPalette } from "../services/palette-api";
-import ColorCard from "./ColorCard";
+import ColorCard from "./color-card";
 
 interface PaletteResultsProps {
   palette: GeneratedPalette;
